@@ -10,7 +10,7 @@ const addUser = async ({name,password}) => {
     if (name.length<2) {
       return "ERROR: NAME MUST BE 3 OR MORE SYMBOLS"
     }
-    let res = await knex('users').insert({name, password, role: "user"})
+    let res = await knex('users').insert({name, password, role: "user", basket: {}})
     console.log("RES",res)
     return "OK"
   } else {
