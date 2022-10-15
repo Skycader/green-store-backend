@@ -12,7 +12,8 @@ const manipulateBasket = async ({id,name,password,quantity}) => {
   let users = await knex("users").where("name",name).select("*")
   
   if (!users.length) return "FAIL: YOU ARE NOT SIGNED IN"
-  if (password !== users[0].password) return "FAIL: WRONG PASSWORD"
+  console.log(password, users)
+  if (password !== users[0].password.toString()) return "FAIL: WRONG PASSWORD"
   let basket = users[0].basket
   basket = JSON.parse(basket)
   if (basket[id] == undefined) basket[id] = 0
