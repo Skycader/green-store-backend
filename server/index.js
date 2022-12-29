@@ -7,7 +7,7 @@ const path = require('path')
 app.use(cors());
 app.use(bodyParser.json({limit: '50mb'}));
 
-app.use('/', express.static('public/build'))
+app.use(express.static('public/build'))
 app.get('*', function(req, res) {
   res.sendFile('index.html', {root: path.join(__dirname, '../public/build/')});
 });
